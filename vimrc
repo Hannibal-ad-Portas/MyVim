@@ -41,3 +41,9 @@ set foldmethod=indent	" fold based on indent
 let mapleader=","		"leader is a comma
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
+
+"remaps for vim split
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
