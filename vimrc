@@ -82,7 +82,6 @@ set foldnestmax=10		" sets the maximum nests
 nnoremap <space> za 
 set foldmethod=indent	" fold based on indent
 
-let mapleader=","		"leader is a comma
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
