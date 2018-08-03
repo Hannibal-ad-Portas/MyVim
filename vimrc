@@ -5,12 +5,18 @@ let mapleader = ","
 " use vim pathogen as a package manager
 execute pathogen#infect()
 
+"Hard mode auto enables
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+let g:HardMode_level = 'wannabe'
+"Map hard mode toggle to <leader>h
+"nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+
 "=======[ Appearance ]===
 "Use the badwolf color scheam
 color badwolf
 syntax enable
 " Make Comments More Visible
-highlight Comment term=bold ctermfg=white
+highlight Comment term=bold ctermfg=yellow
 highlight Visual	ctermfg=Yellow ctermbg=26	"26 = Dusty Blue Background	
 highlight SpecialKey cterm=bold ctermfg=Blue
 
