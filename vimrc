@@ -19,6 +19,7 @@ filetype plugin indent on
 set tabstop=4		"Number of visual spaces per tab
 set softtabstop=4	"Number of spaces in tabs when editing
 set shiftround		"Always indent to the nearist tabstop
+set shiftwidth=4	"Set prefered indent size for smartindent
 set smarttab		"Use shiftwidths at left margin, tabstops everywhere else
 
 set number		" turn on line number
