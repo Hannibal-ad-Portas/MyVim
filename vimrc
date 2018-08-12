@@ -1,9 +1,14 @@
-"=======[ Global ]========
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+" GLOBAL {{{ 
 let mapleader = ","
+set modelines=1
+" }}}
 
-"=======[ Plugins ]=======
+"PATHOGEN {{{
 " use vim pathogen as a package manager
 execute pathogen#infect()
+nnoremap <leader>u  :GundoToggle<CR>
+" }}}
 
 "Hard mode auto enables
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
@@ -11,12 +16,13 @@ let g:HardMode_level = 'wannabe'
 "Map hard mode toggle to <leader>h
 "nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
-"=======[ Appearance ]===
+"=======[ APPEARANCE ]===
 "Use the badwolf color scheam
 color badwolf
 syntax enable
+set background=dark
 " Make Comments More Visible
-highlight Comment term=bold ctermfg=yellow
+highlight Comment term=bold ctermfg=white
 highlight Visual	ctermfg=Yellow ctermbg=26	"26 = Dusty Blue Background	
 highlight SpecialKey cterm=bold ctermfg=Blue
 
@@ -28,6 +34,7 @@ set shiftround		"Always indent to the nearist tabstop
 set shiftwidth=4	"Set prefered indent size for smartindent
 set smarttab		"Use shiftwidths at left margin, tabstops everywhere else
 
+set relativenumber "turn on relative line number
 set number		" turn on line number
 set showcmd		" show command in bottom bar
 set cursorline		" hilight current line
@@ -126,6 +133,16 @@ set infercase	"adjust completions to match case
 set updatecount=10
 
 "=======[ General Remappings ]=========
+"open vimrc in vertical split
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+"source my vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+"Change Word to Uppercase in insert mode
+inoremap <c-d> <esc> viw U i
+"hilight last inserted text
+nnoremap gV '[v']
+
+
 "use space to jump down a page
 nnoremap <Space> <PageDown>
 xnoremap <Space> <PageDown>
@@ -134,7 +151,7 @@ xnoremap <Space> <PageDown>
 nmap %% $>i}''
 nmap $$ $<i}''
 
-"remaps for vim split       
+"remaps to navigate vim splits easily 
 map <C-h> <C-w>h            
 map <C-j> <C-w>j            
 map <C-k> <C-w>k            
@@ -168,3 +185,16 @@ endfunction
 "====[ Pathogen Support ]====================
 call pathogen#infect()
 call pathogen#helptags()
+
+
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+" vim:foldmethod=marker:foldlevel=0
