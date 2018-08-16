@@ -1,13 +1,25 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " GLOBAL {{{ 
 let mapleader = ","
 set modelines=1
-" }}}
-
-"PATHOGEN {{{
-" use vim pathogen as a package manager
-execute pathogen#infect()
-nnoremap <leader>u  :GundoToggle<CR>
 " }}}
 
 "Hard mode auto enables
@@ -77,7 +89,6 @@ endfunction`
 
 
 set wildmenu		" visual autocomplete for command menu
-set lazyredraw		" only redraw when needed
 set showmatch		" hilights matching [{()}]
 "keep long longs from slowing vim down too much
 set synmaxcol=200
