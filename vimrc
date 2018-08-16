@@ -1,3 +1,4 @@
+" VUNDEL {{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -17,18 +18,21 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" }}}
+
 " GLOBAL {{{ 
 let mapleader = ","
 set modelines=1
+"keep long longs from slowing vim down too much
+set synmaxcol=200
+set wildmenu		" visual autocomplete for command menu
+set wildmode=list:longest,full	"Show lists of completions 
+								" and complete as much as possible,
+								" the iterate full completion
+set infercase	"adjust completions to match case
 " }}}
 
-"Hard mode auto enables
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-let g:HardMode_level = 'wannabe'
-"Map hard mode toggle to <leader>h
-"nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
-
-"=======[ APPEARANCE ]===
+" APPEARANCE {{{ 
 "Use the badwolf color scheam
 color badwolf
 syntax enable
@@ -51,9 +55,10 @@ set number		" turn on line number
 set showcmd		" show command in bottom bar
 set cursorline		" hilight current line
 set cursorcolumn	" highlight current column
+set showmatch		" hilights matching [{()}]
+" }}}
 
-
-"=======[ Show when lines extend past column 80 ]==========
+" Show when lines extend past column 80 {{{ 
 highlight ColorColumn ctermfg=208 ctermbg=Black
 
 function MarkMargin (on)
@@ -74,8 +79,9 @@ augroup MarkMargin
 	autocmd BufEnter	*		:call MarkMargin(1)
 	autocmd BufEnter	*.vp*	:call MarkMargin(0)
 augroup END
+" }}}
 
-" SmartIndent Set up
+" SmartIndent {{{ 
 set autoindent	"Retain indentation on new line
 set smartindent	"Turn on autoindenting of blocks
 
@@ -87,30 +93,26 @@ function! ShiftLine()
 	set smartindent
 endfunction`
 
+" }}}
 
-set wildmenu		" visual autocomplete for command menu
-set showmatch		" hilights matching [{()}]
-"keep long longs from slowing vim down too much
-set synmaxcol=200
 
-" searching
+" searching {{{
 set incsearch		" search as characters are entered
 set hlsearch		" hilights matches
 "  turn off search highlighting by pressing space
 nnoremap <leader><Space> :nohlsearch<CR>
+" }}}
 
-" Folding
+" Folding {{{
 set foldenable			" enables foldiong
 set foldlevelstart=10	" opens the first ten levels of folds
 set foldnestmax=10		" sets the maximum nests
 " za opens and closes folds
 nnoremap <space> za 
 set foldmethod=indent	" fold based on indent
+" }}}
 
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
-
-"======[ Visual Mode Adjustments ] ======
+" Visual Mode Adjustments {{{ 
 "Set default behavior to visual block
 nnoremap v <C-V>
 nnoremap <C-V> v
@@ -135,15 +137,11 @@ xmap <right>	<Plug>SchleppRight
 
 xmap D			<Plug>SchleppDupLeft
 xmap <C-D>		<plug>SchleppDupLeft
+" }}}
 
-set wildmode=list:longest,full	"Show lists of completions 
-								" and complete as much as possible,
-								" the iterate full completion
-set infercase	"adjust completions to match case
 
-set updatecount=10
 
-"=======[ General Remappings ]=========
+" General Remappings {{{ 
 "open vimrc in vertical split
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "source my vimrc
@@ -171,8 +169,9 @@ map <C-l> <C-w>l
 "Remap for quick Ex commands
 nnoremap ; :
 xnoremap : ;
+" }}}
 
-"=====[ Cut and paste from the system clipboard ]====================
+" Cut and paste from the system clipboard {{{ 
 
 " When in Normal mode, paste over the current line...
 nmap  <C-P> 0d$"*p
@@ -192,14 +191,9 @@ function! YankedToClipboard ()
 	let lines = (N == 1 ? 'line' : 'lines')
 	echo block_of . N lines 'yanked to clipboard'
 endfunction
+" }}}
 
-"====[ Pathogen Support ]====================
-call pathogen#infect()
-call pathogen#helptags()
-
-
-
-" allows cursor change in tmux mode
+" allows cursor change in tmux mode {{{
 if exists('$TMUX')
 	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -207,5 +201,7 @@ else
 	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+" }}}
 
+" specal settings for this file. 
 " vim:foldmethod=marker:foldlevel=0
