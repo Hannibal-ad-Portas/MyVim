@@ -27,7 +27,6 @@ set synmaxcol=200
 set wildmenu		" visual autocomplete for command menu
 set wildmode=list:longest,full	"Show lists of completions 
 								" and complete as much as possible,
-								" the iterate full completion
 set infercase	"adjust completions to match case
 " }}}
 
@@ -144,6 +143,8 @@ xmap <C-D>		<plug>SchleppDupLeft
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "source my vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
+"open a text file for writing notes in the current directory
+nnoremap <leader>en :vsplit ./notes<cr>
 "Change Word to Uppercase in insert mode
 inoremap <c-d> <esc> viw U i
 "hilight last inserted text
