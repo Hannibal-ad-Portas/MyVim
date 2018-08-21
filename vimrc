@@ -1,6 +1,6 @@
 " VUNDEL {{{
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible	" be iMproved, required
+filetype off		" required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -10,7 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'tpope/vim-fugitive'
 
 
@@ -50,6 +49,8 @@ set shiftround		"Always indent to the nearist tabstop
 set shiftwidth=4	"Set prefered indent size for smartindent
 set smarttab		"Use shiftwidths at left margin, tabstops everywhere else
 
+set listchars=tab:>-,trail:·
+set list
 set relativenumber "turn on relative line number
 set number		" turn on line number
 set showcmd		" show command in bottom bar
@@ -95,7 +96,6 @@ endfunction`
 
 " }}}
 
-
 " searching {{{
 set incsearch		" search as characters are entered
 set hlsearch		" hilights matches
@@ -139,8 +139,6 @@ xmap D			<Plug>SchleppDupLeft
 xmap <C-D>		<plug>SchleppDupLeft
 " }}}
 
-
-
 " General Remappings {{{ 
 "open vimrc in vertical split
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -150,7 +148,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 inoremap <c-d> <esc> viw U i
 "hilight last inserted text
 nnoremap gV '[v']
-
+"jk exit insert mode
+inoremap jk <esc>
 
 "use space to jump down a page
 nnoremap <Space> <PageDown>
@@ -203,5 +202,17 @@ else
 endif
 " }}}
 
-" specal settings for this file. 
+" AUTOFORMAT {{{
+inoremap {} {<return>}<esc>k$a<return>
+" }}}
+
+" BOOTCAMP {{{
+inoremap	<esc>	<nop>
+nnoremap	<left>	<nop>
+nnoremap	<right>	<nop>
+nnoremap	<up>	<nop>
+nnoremap	<down>	<nop>
+"}}}
+
+" specal settings for this file.
 " vim:foldmethod=marker:foldlevel=0
