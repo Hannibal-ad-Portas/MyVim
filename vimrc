@@ -157,8 +157,8 @@ nnoremap <Space> <PageDown>
 xnoremap <Space> <PageDown>
 
 "Indent/Outdent current block
-nmap %% $>i}''
-nmap $$ $<i}''
+nmap >> $>i}''
+nmap << $<i}''
 
 "remaps to navigate vim splits easily 
 map <C-h> <C-w>h            
