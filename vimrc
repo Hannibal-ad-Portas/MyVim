@@ -1,5 +1,4 @@
-" VUNDEL {{{
-set nocompatible	" be iMproved, required
+" VUNDEL {{{ set nocompatible	" be iMproved, required
 filetype off		" required
 
 " set the runtime path to include Vundle and initialize
@@ -11,7 +10,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-
+Plugin 'sjl/gundo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -21,6 +23,7 @@ filetype plugin indent on    " required
 
 " GLOBAL {{{ 
 let mapleader = ","
+set nocompatible
 set modelines=1
 "keep long longs from slowing vim down too much
 set synmaxcol=200
@@ -28,6 +31,10 @@ set wildmenu		" visual autocomplete for command menu
 set wildmode=list:longest,full	"Show lists of completions 
 								" and complete as much as possible,
 set infercase	"adjust completions to match case
+set splitbelow
+set splitright
+
+map <leader>c :!compiler <c-r>%<CR>
 " }}}
 
 " APPEARANCE {{{ 
@@ -161,14 +168,26 @@ nmap >> $>i}''
 nmap << $<i}''
 
 "remaps to navigate vim splits easily 
-map <C-h> <C-w>h            
-map <C-j> <C-w>j            
-map <C-k> <C-w>k            
-map <C-l> <C-w>l            
-                            
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 "Remap for quick Ex commands
 nnoremap ; :
 xnoremap : ;
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+"Replace all with S
+nnoremap S :%s??g<left><left>
+
+"Spellcheck on F6
+map <F6> :setlocal spell! spelllang=en_us<CR>
+
+"Get line and work count with F3
+map <F3> :!wc <C-R>%<CR>
+
 " }}}
 
 " Cut and paste from the system clipboard {{{ 
@@ -214,6 +233,30 @@ nnoremap	<right>	<nop>
 nnoremap	<up>	<nop>
 nnoremap	<down>	<nop>
 "}}}
+
+" Abbreviations {{{
+iabbrev hellow hello
+iabbrev Hellow Hello
+"}}}
+
+" Autocommands {{{
+" Filetype spicific commands
+autocmd FileType vim	nnoremap <buffer> <LocalLeader>c I"<esc>
+autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
+autocmd FileType cpp	nnoremap <buffer> <localleader>c I//<esc>
+
+"headers
+autocmd bufnewfile	*.sh	0r ~/.vim/headers/sh_header
+autocmd bufnewfile	*.cpp	0r ~/.vim/headers/cpp_header
+autocmd bufnewfile	*.c		0r ~/.vim/headers/cpp_header
+autocmd bufnewfile	*.h		0r ~/.vim/headers/cpp_header
+
+" Format when opining files
+autocmd bufwritepre	*.cc	:normal gg=G
+autocmd bufwritepre	*.c		:normal gg=G
+autocmd bufwritepre	*.cpp	:normal gg=G
+autocmd bufwritepre	*.h		:normal gg=G
+" }}}
 
 " specal settings for this file.
 " vim:foldmethod=marker:foldlevel=0
