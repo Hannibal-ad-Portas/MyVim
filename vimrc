@@ -256,7 +256,12 @@ autocmd bufwritepre	*.cc	:normal gg=G
 autocmd bufwritepre	*.c		:normal gg=G
 autocmd bufwritepre	*.cpp	:normal gg=G
 autocmd bufwritepre	*.h		:normal gg=G
+
+" file spicific comments
+autocmd FileType c		:set comments=sl:/*,mb:**,elx:*/
+autocmd FileType cpp	:set comments=sl:/*,mb:**,elx:*/
 " }}}
+
 
 " specal settings for this file.
 " vim:foldmethod=marker:foldlevel=0
