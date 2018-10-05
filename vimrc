@@ -14,6 +14,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'zirrostig/vim-schlepp'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -33,6 +34,10 @@ set wildmode=list:longest,full	"Show lists of completions
 set infercase	"adjust completions to match case
 set splitbelow
 set splitright
+
+"turn off the ruler and turn on statusline
+set noru
+set laststatus=2
 
 map <leader>c :!compiler <c-r>%<CR>
 " }}}
@@ -260,6 +265,15 @@ autocmd bufwritepre	*.h		:normal gg=G
 " file spicific comments
 autocmd FileType c		:set comments=sl:/*,mb:**,elx:*/
 autocmd FileType cpp	:set comments=sl:/*,mb:**,elx:*/
+" }}}
+
+" Statusline {{{
+set statusline=%f
+set statusline+=\ -
+set statusline+=FileType:
+set statusline+=%y
+set statusline+=%=
+set statusline+=%{FugitiveStatusline()}
 " }}}
 
 
