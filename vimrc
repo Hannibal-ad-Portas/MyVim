@@ -43,7 +43,7 @@ map <leader>c :!compiler <c-r>%<CR>
 " }}}
 
 " APPEARANCE {{{ 
-"Use the badwolf color scheam
+"Use the badwolf color scheme
 color badwolf
 syntax enable
 set background=dark
@@ -56,8 +56,8 @@ filetype plugin indent on
 
 set tabstop=4		"Number of visual spaces per tab
 set softtabstop=4	"Number of spaces in tabs when editing
-set shiftround		"Always indent to the nearist tabstop
-set shiftwidth=4	"Set prefered indent size for smartindent
+set shiftround		"Always indent to the nearest tabstop
+set shiftwidth=4	"Set preferred indent size for smartindent
 set smarttab		"Use shiftwidths at left margin, tabstops everywhere else
 
 set listchars=tab:>-,trail:·
@@ -65,9 +65,9 @@ set list
 set relativenumber "turn on relative line number
 set number		" turn on line number
 set showcmd		" show command in bottom bar
-set cursorline		" hilight current line
+set cursorline		" highlight current line
 set cursorcolumn	" highlight current column
-set showmatch		" hilights matching [{()}]
+set showmatch		" highlights matching [{()}]
 " }}}
 
 " Show when lines extend past column 80 {{{ 
@@ -109,13 +109,13 @@ endfunction`
 
 " searching {{{
 set incsearch		" search as characters are entered
-set hlsearch		" hilights matches
+set hlsearch		" highlight matches
 "  turn off search highlighting by pressing space
 nnoremap <leader><Space> :nohlsearch<CR>
 " }}}
 
 " Folding {{{
-set foldenable			" enables foldiong
+set foldenable			" enables folding
 set foldlevelstart=10	" opens the first ten levels of folds
 set foldnestmax=10		" sets the maximum nests
 " za opens and closes folds
@@ -159,7 +159,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>en :vsplit ./notes<cr>
 "Change Word to Uppercase in insert mode
 inoremap <c-d> <esc> viw U i
-"hilight last inserted text
+"highlight last inserted text
 nnoremap gV '[v']
 "jk exit insert mode
 inoremap jk <esc>
@@ -227,11 +227,11 @@ else
 endif
 " }}}
 
-" AUTOFORMAT {{{
+" AUTO FORMAT {{{
 inoremap {} {<return>}<esc>k$a<return>
 " }}}
 
-" BOOTCAMP {{{
+" BOOT CAMP {{{
 inoremap	<esc>	<nop>
 nnoremap	<left>	<nop>
 nnoremap	<right>	<nop>
@@ -244,8 +244,8 @@ iabbrev hellow hello
 iabbrev Hellow Hello
 "}}}
 
-" Autocommands {{{
-" Filetype spicific commands
+" Auto commands {{{
+" File type specific commands
 autocmd FileType vim	nnoremap <buffer> <LocalLeader>c I"<esc>
 autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType cpp	nnoremap <buffer> <localleader>c I//<esc>
@@ -262,12 +262,12 @@ autocmd bufwritepre	*.c		:normal gg=G
 autocmd bufwritepre	*.cpp	:normal gg=G
 autocmd bufwritepre	*.h		:normal gg=G
 
-" file spicific comments
-autocmd FileType c		:set comments=sl:/*,mb:**,elx:*/
-autocmd FileType cpp	:set comments=sl:/*,mb:**,elx:*/
+" file type specific comments
+autocmd FileType c		:set comments=sl1:/*,mb:*,elx:*/
+autocmd FileType cpp	:set comments=sl1:/*,mb:*,elx:*/
 " }}}
 
-" Statusline {{{
+" Status line {{{
 set statusline=%f
 set statusline+=\ -
 set statusline+=FileType:
@@ -277,5 +277,5 @@ set statusline+=%{FugitiveStatusline()}
 " }}}
 
 
-" specal settings for this file.
+" special settings for this file.
 " vim:foldmethod=marker:foldlevel=0
