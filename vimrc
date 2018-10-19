@@ -255,6 +255,7 @@ autocmd bufnewfile	*.sh	0r ~/.vim/headers/sh_header
 autocmd bufnewfile	*.cpp	0r ~/.vim/headers/cpp_header
 autocmd bufnewfile	*.c		0r ~/.vim/headers/cpp_header
 autocmd bufnewfile	*.h		0r ~/.vim/headers/cpp_header
+autocmd bufnewfile	*.tex	0r ~/.vim/headers/LaTeX_H
 
 " Format when opining files
 autocmd bufwritepre	*.cc	:normal gg=G
