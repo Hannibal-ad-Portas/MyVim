@@ -251,10 +251,10 @@ autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType cpp	nnoremap <buffer> <localleader>c I//<esc>
 
 "headers
-autocmd bufnewfile	*.sh	0r ~/.vim/headers/sh_header
-autocmd bufnewfile	*.cpp	0r ~/.vim/headers/cpp_header
-autocmd bufnewfile	*.c		0r ~/.vim/headers/cpp_header
-autocmd bufnewfile	*.h		0r ~/.vim/headers/cpp_header
+autocmd bufnewfile	*.sh	0r ~/.vim/headers/BASH_h
+autocmd bufnewfile	*.cpp	0r ~/.vim/headers/CPP_h
+autocmd bufnewfile	*.c		0r ~/.vim/headers/CPP_h
+autocmd bufnewfile	*.h		0r ~/.vim/headers/CPP_h
 autocmd bufnewfile	*.tex	0r ~/.vim/headers/LaTeX_H
 
 " Format when opining files
