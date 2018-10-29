@@ -15,6 +15,8 @@ Plugin 'junegunn/limelight.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'zirrostig/vim-schlepp'
+Plugin 'lervag/vimtex'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -251,10 +253,10 @@ autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType cpp	nnoremap <buffer> <localleader>c I//<esc>
 
 "headers
-autocmd bufnewfile	*.sh	0r ~/.vim/headers/BASH_h
-autocmd bufnewfile	*.cpp	0r ~/.vim/headers/CPP_h
-autocmd bufnewfile	*.c		0r ~/.vim/headers/CPP_h
-autocmd bufnewfile	*.h		0r ~/.vim/headers/CPP_h
+autocmd bufnewfile	*.sh	0r ~/.vim/headers/BASH_H
+autocmd bufnewfile	*.cpp	0r ~/.vim/headers/CPP_H
+autocmd bufnewfile	*.c		0r ~/.vim/headers/CPP_H
+autocmd bufnewfile	*.h		0r ~/.vim/headers/CPP_H
 autocmd bufnewfile	*.tex	0r ~/.vim/headers/LaTeX_H
 
 " Format when opining files
