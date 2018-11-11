@@ -1,4 +1,5 @@
-" VUNDEL {{{ set nocompatible	" be iMproved, required
+" VUNDEL {{{
+set nocompatible	" be iMproved, required
 filetype off		" required
 
 " set the runtime path to include Vundle and initialize
@@ -22,6 +23,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'powerline/powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,6 +77,10 @@ set showcmd		" show command in bottom bar
 set cursorline		" highlight current line
 set cursorcolumn	" highlight current column
 set showmatch		" highlights matching [{()}]
+
+" Don't let airline use powerline fonts it doesn't seem to be working with st
+let g:airline_powerline_fonts = 0
+
 " }}}
 
 " Show when lines extend past column 80 {{{ 
@@ -246,7 +252,7 @@ nnoremap	<up>	<nop>
 nnoremap	<down>	<nop>
 "}}}
 
-" Abbreviations {{{
+" ABBREVIATIONS {{{
 iabbrev hellow hello
 iabbrev Hellow Hello
 "}}}
