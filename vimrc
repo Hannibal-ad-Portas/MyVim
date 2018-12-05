@@ -10,17 +10,39 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" Git integration
 Plugin 'tpope/vim-fugitive'
+
+" linting - automatic error finding
+Plugin 'w0rp/ale'
+
+" Graphical Undo Tree
 Plugin 'sjl/gundo.vim'
+
 Plugin 'junegunn/limelight.vim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+
+" Move visual blocks around 
 Plugin 'zirrostig/vim-schlepp'
+
 Plugin 'sophacles/vim-processing'
+
+" Make working with LaTeX not painfull
 Plugin 'lervag/vimtex'
+
+" Error checking on buffer write
 Plugin 'scrooloose/syntastic'
+
+" Move between tmux pains and vim splits
 Plugin 'christoomey/vim-tmux-navigator'
+
+" Put thinkgs around things with vim movements
 Plugin 'tpope/vim-surround'
+
+" Save the Session config
+Plugin 'tpope/vim-obsession'
+
+" Put information at the bottom of the screen
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'powerline/powerline'
@@ -33,13 +55,16 @@ filetype plugin indent on    " required
 
 " GLOBAL {{{ 
 let mapleader = ","
+" Set runtime path to read files in ~/.vim/plugin
+" This is where I keep smaller personal plugins
+set rtp+=~/.vim/plugin/**/*.vim
 set nocompatible
 set modelines=1
 "keep long longs from slowing vim down too much
 set synmaxcol=200
 set wildmenu		" visual autocomplete for command menu
 set wildmode=list:longest,full	"Show lists of completions 
-								" and complete as much as possible,
+" and complete as much as possible,
 set infercase	"adjust completions to match case
 set splitbelow
 set splitright
@@ -86,7 +111,7 @@ let g:airline_powerline_fonts = 0
 " Show when lines extend past column 80 {{{ 
 highlight ColorColumn ctermfg=208 ctermbg=Black
 
-function MarkMargin (on)
+function! MarkMargin (on)
 	if exists('b:MarkMargin')
 		try
 			call matchdelete(b:MarkMargin)
@@ -131,6 +156,7 @@ nnoremap <leader><Space> :nohlsearch<CR>
 set foldenable			" enables folding
 set foldlevelstart=10	" opens the first ten levels of folds
 set foldnestmax=10		" sets the maximum nests
+
 " za opens and closes folds
 nnoremap <space> za 
 set foldmethod=indent	" fold based on indent
@@ -153,7 +179,7 @@ xmap <BS> x
 "Make vaa select the entire file
 xmap aa VGo1G
 
-"=====[ Arrow Keys move visual blocks ]===
+" Arrow Keys move visual blocks
 xmap <up>		<Plug>SchleppUp
 xmap <down>		<Plug>SchleppDown
 xmap <left>		<Plug>SchleppLeft
@@ -163,7 +189,7 @@ xmap D			<Plug>SchleppDupLeft
 xmap <C-D>		<plug>SchleppDupLeft
 " }}}
 
-" General Remappings {{{ 
+" General Remappings {{{
 "open vimrc in vertical split
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "source my vimrc
@@ -185,20 +211,27 @@ xnoremap <Space> <PageDown>
 nmap >> $>i}''
 nmap << $<i}''
 
-"remaps to navigate vim splits easily 
+"remaps to navigate vim splits easily
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+"Move vim splits
+map <C-H> <C-w>H
+map <C-J> <C-w>J
+map <C-K> <C-w>K
+map <C-L> <C-w>L
+
 "Remap for quick Ex commands
 nnoremap ; :
 xnoremap : ;
+
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
 "Replace all with S
-nnoremap S :%s??g<left><left>
+nnoremap S :%s//g<left><left>
 
 "Spellcheck on F6
 map <F6> :setlocal spell! spelllang=en_us<CR>
@@ -223,7 +256,7 @@ nmap <C-C> 1G"*yG``:call YankedToClipboard()<CR>
 xmap  <C-C> "*y:call YankedToClipboard()<CR>
 
 function! YankedToClipboard ()
-    let block_of = (visualmode() == "\<C-V>" ? 'block of ' : '')
+	let block_of = (visualmode() == "\<C-V>" ? 'block of ' : '')
 	let N = strlen(substitute(@*, '[^\n]\|\n$', '', 'g')) + 1
 	let lines = (N == 1 ? 'line' : 'lines')
 	echo block_of . N lines 'yanked to clipboard'
@@ -258,6 +291,9 @@ iabbrev Hellow Hello
 "}}}
 
 " Auto commands {{{
+" Strip trailing white space
+autocmd BufWritePre :<C-U>call StripTrailingWhitespace()<CR>
+
 " File type specific commands
 autocmd FileType vim	nnoremap <buffer> <LocalLeader>c I"<esc>
 autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
@@ -275,6 +311,7 @@ autocmd bufwritepre	*.cc	:normal gg=G
 autocmd bufwritepre	*.c		:normal gg=G
 autocmd bufwritepre	*.cpp	:normal gg=G
 autocmd bufwritepre	*.h		:normal gg=G
+autocmd bufwritepre	*	:normal gg=G
 
 " file type specific comments
 autocmd FileType c		:set comments=sl1:/*,mb:*,elx:*/
