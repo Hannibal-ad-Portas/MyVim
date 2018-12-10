@@ -42,6 +42,11 @@ Plugin 'tpope/vim-surround'
 " Save the Session config
 Plugin 'tpope/vim-obsession'
 
+" UML Diagrams in vim? Yes please
+" This does require the PlantUML jar ion your path
+Plugin 'scrooloose/vim-slumlord'
+Plugin 'aklt/plantuml-syntax'
+
 " Put information at the bottom of the screen
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -55,9 +60,9 @@ filetype plugin indent on    " required
 
 " GLOBAL {{{ 
 let mapleader = ","
-" Set runtime path to read files in ~/.vim/plugin
+" Set runtime path to read files in ~/.vim/misk
 " This is where I keep smaller personal plugins
-set rtp+=~/.vim/plugin/**/*.vim
+set rtp+=~/.vim/misk/**/*.vim
 set nocompatible
 set modelines=1
 "keep long longs from slowing vim down too much
