@@ -62,7 +62,7 @@ filetype plugin indent on    " required
 let mapleader = ","
 " Set runtime path to read files in ~/.vim/misk
 " This is where I keep smaller personal plugins
-set rtp+=~/.vim/misk/**/*.vim
+set rtp+=~/.vim/misk/*
 set nocompatible
 set modelines=1
 "keep long longs from slowing vim down too much
