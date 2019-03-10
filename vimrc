@@ -311,12 +311,11 @@ autocmd bufnewfile	*.c		0r ~/.vim/headers/CPP_H
 autocmd bufnewfile	*.h		0r ~/.vim/headers/CPP_H
 autocmd bufnewfile	*.tex	0r ~/.vim/headers/LaTeX_H
 
-" Format when opining files
+" Format when opining/writing files
 autocmd bufwritepre	*.cc	:normal gg=G
 autocmd bufwritepre	*.c		:normal gg=G
 autocmd bufwritepre	*.cpp	:normal gg=G
 autocmd bufwritepre	*.h		:normal gg=G
-autocmd bufwritepre	*	:normal gg=G
 
 " file type specific comments
 autocmd FileType c		:set comments=sl1:/*,mb:*,elx:*/
