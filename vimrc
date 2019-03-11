@@ -304,13 +304,6 @@ autocmd FileType vim	nnoremap <buffer> <LocalLeader>c I"<esc>
 autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType cpp	nnoremap <buffer> <localleader>c I//<esc>
 
-"headers
-autocmd bufnewfile	*.sh	0r ~/.vim/headers/BASH_H
-autocmd bufnewfile	*.cpp	0r ~/.vim/headers/CPP_H
-autocmd bufnewfile	*.c		0r ~/.vim/headers/CPP_H
-autocmd bufnewfile	*.h		0r ~/.vim/headers/CPP_H
-autocmd bufnewfile	*.tex	0r ~/.vim/headers/LaTeX_H
-
 " Format when opining/writing files
 autocmd bufwritepre	*.cc	:normal gg=G
 autocmd bufwritepre	*.c		:normal gg=G
@@ -331,6 +324,13 @@ set statusline+=%=
 set statusline+=%{FugitiveStatusline()}
 " }}}
 
+" Word Processing {{{
+" Compile document, be it groff/LaTeX/markdown/etc.
+	map <leader>c :w! \| !compiler <c-r>%<CR>
+
+" Open corresponding .pdf/.html or preview
+	map <leader>p :!opout <c-r>%<CR><CR>
+" }}}
 
 " special settings for this file.
 " vim:foldmethod=marker:foldlevel=0
