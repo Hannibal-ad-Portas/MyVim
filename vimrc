@@ -11,6 +11,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Color Scheme
+Plugin 'sjl/badwolf'
+
 " Git integration
 Plugin 'tpope/vim-fugitive'
 
@@ -22,7 +25,7 @@ Plugin 'sjl/gundo.vim'
 
 Plugin 'junegunn/limelight.vim'
 
-" Move visual blocks around 
+" Move visual blocks around
 Plugin 'zirrostig/vim-schlepp'
 
 Plugin 'sophacles/vim-processing'
@@ -52,13 +55,15 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'powerline/powerline'
 
+"See colors in the file
+Plugin 'chrisbra/colorizer'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " }}}
 
-" GLOBAL {{{ 
+" GLOBAL {{{
 let mapleader = ","
 " Set runtime path to read files in ~/.vim/misk
 " This is where I keep smaller personal plugins
@@ -68,7 +73,7 @@ set modelines=1
 "keep long longs from slowing vim down too much
 set synmaxcol=200
 set wildmenu		" visual autocomplete for command menu
-set wildmode=list:longest,full	"Show lists of completions 
+set wildmode=list:longest,full	"Show lists of completions
 " and complete as much as possible,
 set infercase	"adjust completions to match case
 set splitbelow
@@ -81,7 +86,7 @@ set laststatus=2
 map <leader>c :!compiler <c-r>%<CR>
 " }}}
 
-" APPEARANCE {{{ 
+" APPEARANCE {{{
 "Use the badwolf color scheme
 color badwolf
 syntax enable
@@ -113,7 +118,7 @@ let g:airline_powerline_fonts = 0
 
 " }}}
 
-" Show when lines extend past column 80 {{{ 
+" Show when lines extend past column 80 {{{
 highlight ColorColumn ctermfg=208 ctermbg=Black
 
 function! MarkMargin (on)
@@ -136,7 +141,7 @@ augroup MarkMargin
 augroup END
 " }}}
 
-" SmartIndent {{{ 
+" SmartIndent {{{
 set autoindent	"Retain indentation on new line
 set smartindent	"Turn on autoindenting of blocks
 
@@ -163,11 +168,11 @@ set foldlevelstart=10	" opens the first ten levels of folds
 set foldnestmax=10		" sets the maximum nests
 
 " za opens and closes folds
-nnoremap <space> za 
+nnoremap <space> za
 set foldmethod=indent	" fold based on indent
 " }}}
 
-" Visual Mode Adjustments {{{ 
+" Visual Mode Adjustments {{{
 "Set default behavior to visual block
 nnoremap v <C-V>
 nnoremap <C-V> v
@@ -246,7 +251,7 @@ map <F3> :!wc <C-R>%<CR>
 
 " }}}
 
-" Cut and paste from the system clipboard {{{ 
+" Cut and paste from the system clipboard {{{
 
 " When in Normal mode, paste over the current line...
 nmap  <C-P> 0d$"*p
@@ -278,10 +283,6 @@ else
 endif
 " }}}
 
-" AUTO FORMAT {{{
-inoremap {} {<return>}<esc>k$a<return>
-" }}}
-
 " BOOT CAMP {{{
 inoremap	<esc>	<nop>
 nnoremap	<left>	<nop>
@@ -298,21 +299,6 @@ iabbrev Hellow Hello
 " Auto commands {{{
 " Strip trailing white space
 autocmd BufWritePre :<C-U>call StripTrailingWhitespace()<CR>
-
-" File type specific commands
-autocmd FileType vim	nnoremap <buffer> <LocalLeader>c I"<esc>
-autocmd FileType c		nnoremap <buffer> <localleader>c I//<esc>
-autocmd FileType cpp	nnoremap <buffer> <localleader>c I//<esc>
-
-" Format when opining/writing files
-autocmd bufwritepre	*.cc	:normal gg=G
-autocmd bufwritepre	*.c		:normal gg=G
-autocmd bufwritepre	*.cpp	:normal gg=G
-autocmd bufwritepre	*.h		:normal gg=G
-
-" file type specific comments
-autocmd FileType c		:set comments=sl1:/*,mb:*,elx:*/
-autocmd FileType cpp	:set comments=sl1:/*,mb:*,elx:*/
 " }}}
 
 " Status line {{{
@@ -330,6 +316,10 @@ set statusline+=%{FugitiveStatusline()}
 
 " Open corresponding .pdf/.html or preview
 	map <leader>p :!opout <c-r>%<CR><CR>
+
+" vimtec settings
+" viewer
+	let g:vimtex_view_method = 'zathura'
 " }}}
 
 " special settings for this file.
