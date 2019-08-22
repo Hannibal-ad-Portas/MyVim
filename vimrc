@@ -241,7 +241,7 @@ xnoremap : ;
 nnoremap <leader>u :GundoToggle<CR>
 
 "Replace all with S
-nnoremap S :%s//g<left><left>
+nnoremap <leader>S :%s///g<left><left><left>
 
 "Spellcheck on F6
 map <F6> :setlocal spell! spelllang=en_us<CR>
