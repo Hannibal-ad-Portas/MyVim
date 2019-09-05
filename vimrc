@@ -87,6 +87,7 @@ map <leader>c :!compiler <c-r>%<CR>
 " }}}
 
 " APPEARANCE {{{
+set encoding=utf-8
 "Use the badwolf color scheme
 color badwolf
 syntax enable
