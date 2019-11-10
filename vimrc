@@ -214,8 +214,6 @@ nnoremap <leader>en :vsplit ./notes<cr>
 inoremap <c-d> <esc> viw U i
 "highlight last inserted text
 nnoremap gV '[v']
-"jk exit insert mode
-inoremap jk <esc>
 
 "use space to jump down a page
 nnoremap <Space> <PageDown>
@@ -288,7 +286,6 @@ endif
 " }}}
 
 " BOOT CAMP {{{
-inoremap	<esc>	<nop>
 nnoremap	<left>	<nop>
 nnoremap	<right>	<nop>
 nnoremap	<up>	<nop>
