@@ -50,6 +50,9 @@ Plugin 'tpope/vim-obsession'
 Plugin 'scrooloose/vim-slumlord'
 Plugin 'aklt/plantuml-syntax'
 
+" vimwiki
+Plugin 'vimwiki/vimwiki'
+
 " Put information at the bottom of the screen
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
